@@ -2,10 +2,10 @@
     namespace classe;
 
     abstract class Recette{
-        protected $recette, $nom, $type, $ingredients=[],$prix, $complex, $duree; 
-        
-        public function __construct(string $val_nom){
-            $this->nom = $val_nom;
+        protected static function NouvRecette(string $nom){
+            /*
+            * Coder la fonction afin d'ajouter une recette grace au nom
+            */
         }
 
         protected function modRecette(string $nom){
