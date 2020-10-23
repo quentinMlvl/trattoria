@@ -11,5 +11,11 @@ $loader->register();
 use classe\Ingredient;
 
 $tomate = new Ingredient('tomate', 50);
+$mozza = new Ingredient('mozza', 150);
 
-echo($tomate->nom);
+var_dump($tomate);
+var_dump($mozza);
+
+$tomate->modifyStock();
+
+var_dump(Ingredient::$stock);

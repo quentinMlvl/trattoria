@@ -4,15 +4,15 @@ namespace classe;
 
 class Ingredient {
 
-    protected $nom, $prix_unit, $qty_stock;
+    protected $name, $price;
 
-    protected static $stock = []; 
+    public static $stock = [];
 
-    public function __construct(string $val_nom, string $val_qty)
+    public function __construct(string $val_name, int $val_price)
     {
-        $this->nom = $val_nom;
-        $this->qty_stock = $val_qty;
-        $this->ajouterStock();
+        $this->name = $val_name;
+        $this->price = $val_price;
+        self::$stock[$this->name] = true;
     }
 
     public function __set($name, $value)
@@ -25,9 +25,14 @@ class Ingredient {
         return $this->$name;
     }
 
-    private function ajouterStock()
+    public function modifyStock()
     {
-        self::$stock = [$this->name => $this->qty_stock];
+        if (self::$stock[$this->name]) {
+            self::$stock[$this->name] = false;
+        }else{
+            self::$stock[$this->name]=true;
+        }
+        var_dump(self::$stock[$this->name]);
     }
 
 }
