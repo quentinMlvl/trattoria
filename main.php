@@ -10,12 +10,10 @@ $loader->register();
 
 use classe\Ingredient;
 
+/* TEST ingrédient*/
 $tomate = new Ingredient('tomate', 50);
 $mozza = new Ingredient('mozza', 150);
 
-var_dump($tomate);
 var_dump($mozza);
-
 $tomate->modifyStock();
-
-var_dump(Ingredient::$stock);
+var_dump($tomate);
