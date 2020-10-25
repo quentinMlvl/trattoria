@@ -2,7 +2,7 @@
     namespace classe;
 
     abstract class AbstractRecipe{
-        public $name, $type, $ingredients=[],$price, $complexity, $duration; 
+        public $name, $type, $ingredients=[],$price=0, $complexity, $duration; 
         
         public function __construct(string $val_name, array $val_ingr){
             $this->name = $val_name;
