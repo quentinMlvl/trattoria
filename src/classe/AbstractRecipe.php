@@ -15,12 +15,15 @@
             /*
             * Coder la fonction afin de modifier une recette EXISTANTE grace au nom
             */
+            
         }
 
-        protected function deleteRecipe(string $name){
+        public static function deleteRecipe(AbstractRecipe $recipe){
             /*
             * Coder la fonction afin de supprimer une recette EXISTANTE grace au nom
             */
+            unset($recipe);
+            echo'wolla';
         }
 
         public function addIngredient(Ingredient $ingredient, string $quantity){
@@ -44,11 +47,16 @@
             }
         }
 
-        protected function deleteIngredient($ingredient){
+        public function deleteIngredient(Ingredient $ingredient){
             /*
             * Coder la fonction afin de supprimer un ingrédient EXISTANT
             * !!! PRECISER $ingr COMME OBJET DE CLASSE Ingredient !!! 
             */
+            if (($key = array_search($ingredient, $this->ingredients)) !== FALSE){
+                //unset($ingredients[$key]);
+                array_splice($this->$ingredients, $key, 1);
+            }
+            return $this->ingredients;
         }
 
     }
