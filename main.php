@@ -27,7 +27,6 @@ var_dump($tomate);
 
 Menu::addRecipe($pizza1);
 Menu::addRecipe($pizzaMarga);
-
 //Menu::deleteRecipe($pizza1);
 
 echo(Menu::showMenu());
