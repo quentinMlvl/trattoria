@@ -54,7 +54,7 @@
             */
             if (($key = array_search($ingredient, $this->ingredients)) !== FALSE){
                 //unset($ingredients[$key]);
-                array_splice($this->$ingredients, $key, 1);
+                array_splice($this->ingredients, $key, 1);
             }
             return $this->ingredients;
         }

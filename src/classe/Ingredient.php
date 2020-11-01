@@ -8,6 +8,11 @@ class Ingredient {
 
     protected $stock = [];
 
+    /**
+     * Constructeur
+     * @param string : le nom de l'ingrédient
+     * @param int : le prix unitaire de l'ingrédient
+     */
     public function __construct(string $val_name, int $val_price)
     {
         $this->name = $val_name;
@@ -15,16 +20,15 @@ class Ingredient {
         $this->stock[$this->name] = true;
     }
 
-    public function __set($name, $value)
-    {
-        $this->$name = $value;
+
+    public function __get($name){
+        return $this->$name;   
     }
 
-    public function __get($name)
-    {
-        return $this->$name;
-    }
 
+    /**
+     * Méthode modifiant le statut du stock
+     */
     public function modifyStock()
     {
         if ($this->stock[$this->name]) {
