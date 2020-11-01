@@ -2,6 +2,8 @@
 
 namespace classe;
 
+use classe\Recipe\AbstractRecipe;
+
 class Menu{
 
     /**
@@ -32,22 +34,33 @@ class Menu{
      * Méthode retournant le fragmemnt HTML affichant le menu
      */
     public static function showMenu(){
-        $stringMenu = '';
+        $stringMenu = '<h2>Menu</h2>';
 
         foreach(self::$menu as $recipe){
 
             $stringIngr = '';
 
-            foreach($recipe->ingredients as $ingredient){
-                $stringIngr .= $ingredient[0]->name . " ";
+            switch ($recipe->type) {
+                case 'Pizza':
+                    $stringIngr .= "Base $recipe->base";
+                    break;
+                
+                case 'Pasta':
+                    $stringIngr .= "$recipe->pasta_type";
+                    break;
+                
+                default:
+                    $stringIngr .= "Spécialité italienne";
+                    break;
             }
 
-            $stringMenu .= <<<EOT
-<div>
-    <h2>$recipe->name ......... $recipe->price €</h2>
-    <em>$stringIngr</em>            
-</div>  
-EOT;
+            foreach($recipe->ingredients as $ingredient){
+                $stringIngr .= ", " . $ingredient[0]->name;
+            }
+
+            $stringMenu .= "<div>
+    <h3>$recipe->name ......... $recipe->price €</h3>
+    <em>$stringIngr</em></div>";
         }
 
         return $stringMenu;

@@ -2,6 +2,8 @@
 
 namespace classe;
 
+use classe\Recipe\AbstractRecipe;
+
 class Order{
 
     protected $state, $table; 

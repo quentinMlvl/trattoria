@@ -28,11 +28,11 @@ $testRec = new PizzaRecipe("Pizza Test", [[$tomate,3],[$mozza,2],[$jambon,3]]);
 // var_dump($testRec);
 
     
-   $pizza1->modifyQuantity($tomate, 165);
+   $pizza1->modifyRecipe($tomate, 165);
 //    var_dump($pizza1->ingredients[0]);
     echo("<br><br>");
 
-$testRec->addIngredient($ananas, 2);
+$testRec->modifyRecipe($ananas, 2);
 var_dump($testRec);
 
 echo("<br><br>");
