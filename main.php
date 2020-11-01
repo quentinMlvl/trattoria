@@ -76,7 +76,7 @@ Menu::addRecipe($pateCarbo);
 
 
 /* Affichage du menu */
-echo(Menu::showMenu());
+Menu::showMenu();
 
 
 /* Création de la commande */
@@ -111,3 +111,14 @@ $commande->orderTaken();
 
 /* Création de la facture (pas implémenté) */
 $commande->createBill();
+
+
+/* Test de rupture de stock avec suppression des recettes contenant des champignons du menu */
+
+$champignon->alertStock();
+
+echo '<hr>';
+
+$champignon->modifyStock();
+
+Menu::showMenu();

@@ -6,7 +6,7 @@ class Ingredient {
 
     protected $name, $price;
 
-    protected $stock = [];
+    protected $stock;
 
     /**
      * Constructeur
@@ -17,7 +17,7 @@ class Ingredient {
     {
         $this->name = $val_name;
         $this->price = $val_price;
-        $this->stock[$this->name] = true;
+        $this->stock = true;
     }
 
 
@@ -25,16 +25,33 @@ class Ingredient {
         return $this->$name;   
     }
 
+    /**
+     * Méthode permettant aux cuisines de signaler un manque de stock au patron
+     */
+    public function alertStock(){
+        if ($this->stock) {
+            echo "<br><hr><h2>Rupture de stock de $this->name !!!</h2>";
+        }
+    }
 
     /**
      * Méthode modifiant le statut du stock
      */
     public function modifyStock()
     {
-        if ($this->stock[$this->name]) {
-            $this->stock[$this->name] = false;
+        if ($this->stock) {
+            $this->stock = false;
+
+            foreach (Menu::$menu as $key => $recipe) {
+                    foreach($recipe->ingredients as $v){
+                        if(in_array($this, $v)){
+                            unset(Menu::$menu[$key]);
+                        }
+                    }
+            }
+
         }else{
-            $this->stock[$this->name]=true;
+            $this->stock = true;
         }
     }
 

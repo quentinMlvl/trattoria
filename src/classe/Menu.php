@@ -63,7 +63,7 @@ class Menu{
     <em>$stringIngr</em></div>";
         }
 
-        return $stringMenu;
+        echo $stringMenu;
     }
     
 }
