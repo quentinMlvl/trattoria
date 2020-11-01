@@ -4,26 +4,20 @@ namespace classe;
 
 class Menu{
     
-    protected static $menu = [];
-
-    protected static function modifyMenu(){
-
-    }
+    public static $menu = [];
 
     public static function addRecipe(AbstractRecipe $recipe){
         self::$menu[] = $recipe;
     }
 
     public static function deleteRecipe(AbstractRecipe $recipe){
-        //var_dump(self::$menu[$recette]);        
+        if(in_array($recipe, self::$menu)){
             $key = array_search($recipe, self::$menu);
             unset(self::$menu[$key]);
-            //}else echo "$recipe n'est pas dans le menu";
+        }else echo('Recette inexistante');
     }
     
     public static function showMenu(){
-        //var_dump(self::$menu);
-
         $stringMenu = '';
 
         foreach(self::$menu as $recipe){
